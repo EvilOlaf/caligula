@@ -45,9 +45,9 @@ Options:
 
 There are a couple of ways to install Caligula.
 
+- **Arch Linux:** You can install from the [official repository](https://archlinux.org/packages/extra/x86_64/caligula) with `pacman -S caligula`. We also automatically publish binaries to [caligula-bin on the AUR](https://aur.archlinux.org/packages/caligula-bin) with every release.
+- **Nix:** You can install from the [nixpkgs](https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/ca/caligula/package.nix) package with `nix-env -i caligula`.
 - **Binary release:** You can download pre-built binaries from [the latest Github release](https://github.com/ifd3f/caligula/releases/latest).
-- **Arch Linux:** You can install from the [official repository](https://archlinux.org/packages/extra/x86_64/caligula) using pacman. We also automatically publish binaries to [caligula-bin on the AUR](https://aur.archlinux.org/packages/caligula-bin) with every release.
-- **Nix Package Manager:** If your system is flake-enabled, you can fetch Caligula from the `github:ifd3f/caligula` flake (i.e. with `nix run github:ifd3f/caligula`)
 - **Build from source:** This is a relatively standard cargo project so you should be able to just `git clone` and `cargo build --release` it.
 
 ### Platform support matrix
