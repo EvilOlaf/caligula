@@ -25,21 +25,7 @@ pub fn open_blockdev(path: impl AsRef<Path>, cf: CompressionFormat) -> std::io::
 
 #[cfg(target_os = "macos")]
 pub fn open_blockdev(path: impl AsRef<Path>, _cf: CompressionFormat) -> std::io::Result<File> {
-    // For more info, see:
-    // https://stackoverflow.com/questions/2299402/how-does-one-do-raw-io-on-mac-os-x-ie-equivalent-to-linuxs-o-direct-flag
-
-    use libc::{fcntl, F_NOCACHE, O_SYNC};
-    use std::os::{fd::AsRawFd, unix::fs::OpenOptionsExt};
-
-    let file = OpenOptions::new()
-        .write(true)
-        .custom_flags(O_SYNC)
-        .open(path)?;
-
-    #[cfg(target_os = "macos")]
-    unsafe {
-        fcntl(file.as_raw_fd().into(), F_NOCACHE);
-    }
+    let file = OpenOptions::new().write(true).read(true).open(path)?;
 
     Ok(file)
 }
